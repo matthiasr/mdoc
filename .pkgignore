@@ -1,5 +1,5 @@
 .*.swp
 Makefile
-nginx-*/
-nginx-*.tar.gz
+nginx-*
 .git
+.gitignore
