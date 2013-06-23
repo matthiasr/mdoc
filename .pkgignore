@@ -1,8 +1,10 @@
 .*.swp
 Makefile
 nginx-*
+pcre-*
 .git
 .gitignore
 .pkgignore
+.buildpacks
 Procfile
 README.md

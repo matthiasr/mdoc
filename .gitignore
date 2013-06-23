@@ -2,3 +2,5 @@
 /nginx
 /nginx-*/
 /nginx-*.tar.gz
+/pcre-*/
+/pcre-*.tar.gz
