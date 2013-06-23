@@ -31,9 +31,11 @@ events {
 
 http {
   access_log /dev/stdout;
-  error_log /dev/stderr;
+  error_log stderr notice;
 
   client_body_temp_path $TMPDIR/man-$REVISION-$PORT;
+
+  rewrite_log on;
 
   server {
     listen *:$PORT;
