@@ -13,10 +13,17 @@ then
   export CANONICAL_NAME
 fi
 
-cat >/tmp/man-$REVISION-$PORT.conf <<EOF
+if [ -d /dev/shm ]
+then
+  TMPDIR=/dev/shm
+else
+  TMPDIR=/tmp
+fi
+
+cat >$TMPDIR/man-$REVISION-$PORT.conf <<EOF
 daemon off;
-lock_file /tmp/man-$REVISION-$PORT.lock;
-pid /tmp/man-$REVISION-$PORT.pid;
+lock_file $TMPDIR/man-$REVISION-$PORT.lock;
+pid $TMPDIR/man-$REVISION-$PORT.pid;
 
 events {
 
@@ -38,4 +45,4 @@ http {
 }
 EOF
 
-exec $PWD/nginx -c /tmp/man-$REVISION-$PORT.conf
+exec $PWD/nginx -c /$TMPDIR/man-$REVISION-$PORT.conf
