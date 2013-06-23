@@ -24,7 +24,13 @@ NGINX_CONFIGURE_FLAGS= \
 	--without-http_upstream_ip_hash_module \
 	--without-http_upstream_least_conn_module \
 	--without-http_upstream_keepalive_module \
-	--without-http-cache
+	--without-http-cache \
+	--prefix=${CURDIR} \
+	--sbin-path=${CURDIR} \
+	--error-log-path=/dev/stderr \
+	--pid-path=/dev/null \
+	--lock-path=/tmp/man-$(REVISION).lock \
+	--conf-path=$(CURDIR)/nginx.conf
 
 INSTALL= install -c
 
