@@ -2,3 +2,4 @@
 Makefile
 nginx-*/
 nginx-*.tar.gz
+.git
