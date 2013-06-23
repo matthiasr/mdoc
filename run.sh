@@ -7,7 +7,8 @@ then
   REVISION=testing
   CANONICAL_NAME="localhost:8080"
   export PORT REVISION CANONICAL_NAME
-else
+elif [ -z "$CANONICAL_NAME" ]
+then
   CANONICAL_NAME="man.int.s-cloud.net"
   export CANONICAL_NAME
 fi
