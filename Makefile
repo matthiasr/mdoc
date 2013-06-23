@@ -26,7 +26,7 @@ NGINX_CONFIGURE_FLAGS= \
 	--without-http_upstream_least_conn_module \
 	--without-http_upstream_keepalive_module \
 	--without-http-cache \
-	--with-pcre=${CURDIR}/pcre-${PCRE_VERSION}
+	--with-pcre=${CURDIR}/pcre-${PCRE_VERSION} \
 	--prefix=${CURDIR} \
 	--sbin-path=${CURDIR} \
 	--error-log-path=/dev/stderr \
