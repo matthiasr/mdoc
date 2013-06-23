@@ -66,7 +66,9 @@ nginx: nginx-${NGINX_VERSION}/objs/nginx
 clean:
 	rm -f nginx
 	rm -rf nginx-${NGINX_VERSION}
+	rm -rf pcre-${PCRE_VERSION}
 
 clean-all: clean
 	rm -f nginx-*.tar.gz
 	rm -rf nginx-*
+	rm -rf pcre-*
