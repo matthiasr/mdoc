@@ -12,6 +12,6 @@ Because I need to look up manpages a lot, wanted to practice porting to Bazooka 
 
 ## What next?
 
-* Linux
 * OS X
 * maybe a default OS
+* figure out a way around nginx' case-insensitive matching on OS X
