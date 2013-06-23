@@ -32,6 +32,8 @@ NGINX_CONFIGURE_FLAGS= \
 	--lock-path=/tmp/man-$(REVISION).lock \
 	--conf-path=$(CURDIR)/nginx.conf
 
+include Makefile.pcre
+
 INSTALL= install -c
 
 all: build
