@@ -1,0 +1,4 @@
+.*.swp
+/Makefile
+/nginx-*/
+/nginx-*.tar.gz
