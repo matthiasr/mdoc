@@ -5,3 +5,4 @@ nginx-*
 .gitignore
 .pkgignore
 Procfile
+README.md
