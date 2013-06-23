@@ -4,13 +4,22 @@
 if [ -z "$PORT" ]
 then
   PORT=8080
-  REVISION=testing
   CANONICAL_NAME="localhost:8080"
-  export PORT REVISION CANONICAL_NAME
-elif [ -z "$CANONICAL_NAME" ]
+  export PORT CANONICAL_NAME
+fi
+
+# check mandatory configuration
+if [ -z "$CANONICAL_NAME" ]
 then
-  CANONICAL_NAME="man.int.s-cloud.net"
-  export CANONICAL_NAME
+  echo "MISSING CONFIGURATION: Please set \$CANONICAL_NAME." 1>&2
+  exit 1
+fi
+
+# set dummy revision if none passed in
+if [ -z "$REVISION" ]
+then
+  REVISION="None"
+  export REVISION
 fi
 
 if [ -d /dev/shm ]
