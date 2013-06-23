@@ -30,12 +30,10 @@ events {
 }
 
 http {
-  access_log /dev/stdout;
-  error_log stderr notice;
+  access_log off;
+  error_log stderr info;
 
   client_body_temp_path $TMPDIR/man-$REVISION-$PORT;
-
-  rewrite_log on;
 
   server {
     listen *:$PORT;
