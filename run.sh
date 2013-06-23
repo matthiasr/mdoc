@@ -7,15 +7,23 @@ then
   REVISION=testing
   CANONICAL_NAME="localhost:8080"
   export PORT REVISION CANONICAL_NAME
-else
+elif [ -z "$CANONICAL_NAME" ]
+then
   CANONICAL_NAME="man.int.s-cloud.net"
   export CANONICAL_NAME
 fi
 
-cat >/tmp/man-$REVISION-$PORT.conf <<EOF
+if [ -d /dev/shm ]
+then
+  TMPDIR=/dev/shm
+else
+  TMPDIR=/tmp
+fi
+
+cat >$TMPDIR/man-$REVISION-$PORT.conf <<EOF
 daemon off;
-lock_file /tmp/man-$REVISION-$PORT.lock;
-pid /tmp/man-$REVISION-$PORT.pid;
+lock_file $TMPDIR/man-$REVISION-$PORT.lock;
+pid $TMPDIR/man-$REVISION-$PORT.pid;
 
 events {
 
@@ -24,6 +32,8 @@ events {
 http {
   access_log /dev/stdout;
   error_log /dev/stderr;
+
+  client_body_temp_path $TMPDIR/man-$REVISION-$PORT;
 
   server {
     listen *:$PORT;
@@ -37,4 +47,4 @@ http {
 }
 EOF
 
-exec $PWD/nginx -c /tmp/man-$REVISION-$PORT.conf
+exec $PWD/nginx -c /$TMPDIR/man-$REVISION-$PORT.conf
