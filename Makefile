@@ -50,7 +50,7 @@ nginx: nginx-${NGINX_VERSION}/objs/nginx
 .PHONY: clean clean-all
 
 clean:
-	rm -f nginx nginx-${NGINX_VERSION}.tar.gz
+	rm -f nginx
 	rm -rf nginx-${NGINX_VERSION}
 
 clean-all: clean
