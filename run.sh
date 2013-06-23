@@ -1,9 +1,16 @@
 #!/bin/sh
 
 # test environment
-
-[ -z "$PORT" ] && export PORT=8080
-[ -z "$REVISION" ] && export REVISION="deafbeef"
+if [ -z "$PORT" ]
+then
+  PORT=8080
+  REVISION=testing
+  CANONICAL_NAME="localhost:8080"
+  export PORT REVISION CANONICAL_NAME
+else
+  CANONICAL_NAME="man.int.s-cloud.net"
+  export CANONICAL_NAME
+fi
 
 cat >/tmp/man-$REVISION-$PORT.conf <<EOF
 daemon off;
@@ -20,6 +27,10 @@ http {
 
   server {
     listen *:$PORT;
+
+    set \$port "$PORT";
+    set \$revision "$REVISION";
+    set \$canonical_name "$CANONICAL_NAME";
 
     include $PWD/nginx.conf;
   }
