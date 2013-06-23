@@ -33,6 +33,8 @@ http {
   access_log /dev/stdout;
   error_log /dev/stderr;
 
+  client_body_temp_path $TMPDIR/man-$REVISION-$PORT;
+
   server {
     listen *:$PORT;
 
