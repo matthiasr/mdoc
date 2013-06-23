@@ -12,6 +12,7 @@ Because I need to look up manpages a lot, wanted to practice porting to Bazooka 
 
 ## What next?
 
-* OS X
+* do not require section numbers for OS X
+** or at least give some error message
 * maybe a default OS
 * figure out a way around nginx' case-insensitive matching on OS X
