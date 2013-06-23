@@ -3,3 +3,5 @@ Makefile
 nginx-*
 .git
 .gitignore
+.pkgignore
+Procfile
