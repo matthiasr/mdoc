@@ -1,5 +1,6 @@
 # build nginx for Bazooka deployment
 
+PCRE_VERSION= 8.33
 NGINX_VERSION= 1.5.1
 NGINX_CONFIGURE_FLAGS= \
 	--with-ipv6 \
@@ -25,14 +26,13 @@ NGINX_CONFIGURE_FLAGS= \
 	--without-http_upstream_least_conn_module \
 	--without-http_upstream_keepalive_module \
 	--without-http-cache \
+	--with-pcre=${CURDIR}/pcre-${PCRE_VERSION}
 	--prefix=${CURDIR} \
 	--sbin-path=${CURDIR} \
 	--error-log-path=/dev/stderr \
 	--pid-path=/dev/null \
 	--lock-path=/tmp/man-$(REVISION).lock \
 	--conf-path=$(CURDIR)/nginx.conf
-
-include Makefile.pcre
 
 INSTALL= install -c
 
@@ -46,7 +46,13 @@ nginx-${NGINX_VERSION}.tar.gz:
 nginx-${NGINX_VERSION}: nginx-${NGINX_VERSION}.tar.gz
 	tar xzf $<
 
-nginx-${NGINX_VERSION}/Makefile: nginx-${NGINX_VERSION}
+pcre-${PCRE_VERSION}.tar.gz:
+	curl -O "ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-${PCRE_VERSION}.tar.gz"
+
+pcre-${PCRE_VERSION}: pcre-${PCRE_VERSION}.tar.gz
+	tar xzf $<
+
+nginx-${NGINX_VERSION}/Makefile: nginx-${NGINX_VERSION} pcre-${PCRE_VERSION}
 	cd $<; ./configure ${NGINX_CONFIGURE_FLAGS}
 
 nginx-${NGINX_VERSION}/objs/nginx: nginx-${NGINX_VERSION}/Makefile
