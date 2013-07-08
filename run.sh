@@ -54,7 +54,7 @@ events {
 }
 
 http {
-  access_log off;
+  access_log /dev/stdout;
   error_log stderr info;
 
   client_body_temp_path $TMPDIR/man-$REVISION-$PORT;
