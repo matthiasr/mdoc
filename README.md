@@ -17,7 +17,7 @@ Because I need to look up manpages a lot, wanted to practice porting to Heroku a
 ### Heroku
 
     heroku create $name --buildpack https://github.com/ddollar/heroku-buildpack-multi
-    heroku config:set CANONICAL_NAME=$name.heroku.com
+    heroku config:set CANONICAL_NAME=$name.herokuapp.com
     git push heroku master
 
 ### Bazooka
