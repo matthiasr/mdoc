@@ -1,6 +1,6 @@
 # man page redirector
 
-This is a special-case link shortener for manual pages. It was written by [Constantine A. Murenin](http://mdoc.su/), this is a slightly extended port to Heroku and Bazooka. It is running [on Heroku](http://mdoc.herokuapp.com/).
+This is a special-case link shortener for manual pages. It was written by [Constantine A. Murenin](http://mdoc.su/), this is a slightly extended port to [Heroku](https://www.heroku.com/) and [Bazooka](http://gotocon.com/dl/goto-zurich-2013/slides/AlexanderSimmerl_and_MattProud_BuildingAnInHouseHeroku.pdf). It is running [on Heroku](http://mdoc.herokuapp.com/).
 
 ## Why?
 
