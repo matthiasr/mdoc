@@ -75,7 +75,7 @@ nginx-${NGINX_VERSION}/objs/nginx: nginx-${NGINX_VERSION}/Makefile
 nginx: nginx-${NGINX_VERSION}/objs/nginx
 	${INSTALL} $< $@
 
-.PHONY: clean clean-all
+.PHONY: clean clean-all deploy
 
 clean:
 	rm -f nginx
@@ -86,3 +86,8 @@ clean-all: clean
 	rm -f nginx-*.tar.gz
 	rm -rf nginx-*
 	rm -rf pcre-*
+
+deploy:
+	git push origin master
+	git push heroku master
+	bob deploy			# XXX this is not fully automatic
