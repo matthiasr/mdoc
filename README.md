@@ -14,6 +14,12 @@ Because I need to look up manpages a lot, wanted to practice porting to Heroku a
 
 ## Deploying
 
+### Local testing
+
+    make build && ./run.sh
+
+The app is available on http://localhost:8080/
+
 ### Heroku
 
     heroku create $name --buildpack https://github.com/ddollar/heroku-buildpack-multi
