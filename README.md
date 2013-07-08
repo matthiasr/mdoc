@@ -9,7 +9,7 @@ Because I need to look up manpages a lot, wanted to practice porting to Heroku a
 ## What next?
 
 * do not require section numbers for OS X
-** or at least give some error message
+    * or at least give some error message
 * figure out a way around nginx' case-insensitive matching on OS X
 
 ## Deploying
