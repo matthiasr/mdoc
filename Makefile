@@ -15,7 +15,7 @@
 
 
 PCRE_VERSION= 8.33
-NGINX_VERSION= 1.5.1
+NGINX_VERSION= 1.5.2
 NGINX_CONFIGURE_FLAGS= \
 	--with-ipv6 \
 	--without-http_ssi_module \
