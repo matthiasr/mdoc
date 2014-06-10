@@ -100,4 +100,4 @@ clean-all: clean
 deploy:
 	git push origin master
 	git push heroku master
-	bob deploy			# XXX this is not fully automatic
+	bazooka build
