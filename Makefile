@@ -15,6 +15,7 @@
 
 
 PCRE_VERSION= 8.33
+ZLIB_VERSION= 1.2.8
 NGINX_VERSION= 1.5.2
 NGINX_CONFIGURE_FLAGS= \
 	--with-ipv6 \
@@ -41,6 +42,7 @@ NGINX_CONFIGURE_FLAGS= \
 	--without-http_upstream_keepalive_module \
 	--without-http-cache \
 	--with-pcre=${CURDIR}/pcre-${PCRE_VERSION} \
+	--with-zlib=${CURDIR}/zlib-${ZLIB_VERSION} \
 	--prefix=${CURDIR} \
 	--sbin-path=${CURDIR} \
 	--error-log-path=/dev/null \
@@ -66,7 +68,13 @@ pcre-${PCRE_VERSION}.tar.gz:
 pcre-${PCRE_VERSION}: pcre-${PCRE_VERSION}.tar.gz
 	tar xzf $<
 
-nginx-${NGINX_VERSION}/Makefile: nginx-${NGINX_VERSION} pcre-${PCRE_VERSION}
+zlib-${ZLIB_VERSION}.tar.gz:
+	curl -O "http://zlib.net/zlib-${ZLIB_VERSION}.tar.gz"
+
+zlib-${ZLIB_VERSION}: zlib-${ZLIB_VERSION}.tar.gz
+	tar xzf $<
+
+nginx-${NGINX_VERSION}/Makefile: nginx-${NGINX_VERSION} pcre-${PCRE_VERSION} zlib-${ZLIB_VERSION}
 	cd $<; ./configure ${NGINX_CONFIGURE_FLAGS}
 
 nginx-${NGINX_VERSION}/objs/nginx: nginx-${NGINX_VERSION}/Makefile
@@ -81,11 +89,13 @@ clean:
 	rm -f nginx
 	rm -rf nginx-${NGINX_VERSION}
 	rm -rf pcre-${PCRE_VERSION}
+	rm -rf zlib-${ZLIB_VERSION}
 
 clean-all: clean
 	rm -f nginx-*.tar.gz
 	rm -rf nginx-*
 	rm -rf pcre-*
+	rm -rf zlib-*
 
 deploy:
 	git push origin master
