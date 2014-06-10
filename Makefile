@@ -14,9 +14,9 @@
 
 
 
-PCRE_VERSION= 8.33
+PCRE_VERSION= 8.35
 ZLIB_VERSION= 1.2.8
-NGINX_VERSION= 1.5.2
+NGINX_VERSION= 1.7.1
 NGINX_CONFIGURE_FLAGS= \
 	--with-ipv6 \
 	--without-http_ssi_module \
