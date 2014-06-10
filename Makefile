@@ -47,8 +47,11 @@ NGINX_CONFIGURE_FLAGS= \
 	--sbin-path=${CURDIR} \
 	--error-log-path=/dev/null \
 	--pid-path=/dev/null \
-	--lock-path=/tmp/man-$(REVISION).lock \
-	--with-ld-opt="-static"
+	--lock-path=/tmp/man-$(REVISION).lock
+
+ifneq "$(shell uname -s)" "Darwin"
+NGINX_CONFIGURE_FLAGS+= --with-ld-opt="-static"
+endif
 
 INSTALL= install -c
 
