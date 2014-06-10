@@ -14,20 +14,14 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
+# go wherever this script lives
+cd $(dirname $0)
 
 # test environment
 if [ -z "$PORT" ]
 then
   PORT=8080
-  CANONICAL_NAME="localhost:8080"
-  export PORT CANONICAL_NAME
-fi
-
-# check mandatory configuration
-if [ -z "$CANONICAL_NAME" ]
-then
-  echo "MISSING CONFIGURATION: Please set \$CANONICAL_NAME." 1>&2
-  exit 1
+  export PORT
 fi
 
 # set dummy revision if none passed in
@@ -62,11 +56,9 @@ http {
   server {
     listen *:$PORT;
 
-    set \$port "$PORT";
     set \$revision "$REVISION";
-    set \$canonical_name "$CANONICAL_NAME";
 
-    include $PWD/nginx.conf;
+    include $PWD/nginx_mdoc.conf;
   }
 }
 EOF

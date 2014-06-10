@@ -48,7 +48,6 @@ NGINX_CONFIGURE_FLAGS= \
 	--error-log-path=/dev/null \
 	--pid-path=/dev/null \
 	--lock-path=/tmp/man-$(REVISION).lock \
-	--conf-path=$(CURDIR)/nginx.conf \
 	--with-ld-opt="-static"
 
 INSTALL= install -c
